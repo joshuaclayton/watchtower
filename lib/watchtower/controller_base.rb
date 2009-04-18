@@ -10,12 +10,10 @@ module Watchtower
     module InstanceMethods
       
       def index
-        @watched_exceptions = WatchedException.all
+        @watched_exceptions = WatchedExceptionsPresenter.new(params)
       end
       
-      def show
-        
-      end
+      def show; end
       
       def destroy
         @watched_exception.destroy

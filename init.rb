@@ -1,3 +1,2 @@
-# Include hook code here
+require "will_paginate"
 require "watchtower"
-WatchedException.send :include, Watchtower::WatchedExceptionBase

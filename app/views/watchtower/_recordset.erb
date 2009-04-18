@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Exception</th>
+      <th>Message</th>
+      <th>Controller Action</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% watched_exceptions.each do |exception| %>
+      <tr>
+        <td><%= link_to exception.exception_class, watchtower_path(exception) %></td>
+        <td><%= h exception.message %></td>
+        <td><%= exception.controller_action %></td>
+        <td><%= distance_of_time_in_words_to_now exception.created_at %> ago</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate watched_exceptions %>

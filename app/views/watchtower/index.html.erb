@@ -1,1 +1,40 @@
-welcome
+<div class="content-main">
+  <%= render :partial => "recordset", :locals => {:watched_exceptions => @watched_exceptions} %>
+</div>
+<div class="content-extra">
+  <ul class="filter-exception_class">
+    <% WatchedException.exception_classes.each do |exception_class| %>
+      <li><%= exception_class %></li>
+    <% end %>
+  </ul>
+  <ul class="filter-controller_action">
+    <% WatchedException.controller_actions.each do |controller_action| %>
+      <li><%= controller_action %></li>
+    <% end %>
+  </ul>
+</div>
+<% content_for :footer do %>
+  <script type="text/javascript">
+    (function($) {
+      var watchtower = $.watchtower();
+      
+      $("ul[class^=filter-] li").each(function(idx, li) {
+        var $li     = $(li),
+            filter  = $li.parent().attr("class").replace("filter-", ""),
+            name    = $li.text();
+        
+        $li.click(function() {
+          watchtower.filters(filter).clear();
+          
+          if($li.hasClass("active-filter")) {
+            $li.removeClass("active-filter");
+          } else {
+            $li.siblings().removeClass("active-filter");
+            $li.addClass("active-filter");
+            watchtower.filters(filter).add(name);
+          }
+        });
+      });
+    })(jQuery);
+  </script>
+<% end %>
