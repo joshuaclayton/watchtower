@@ -1,0 +1,3 @@
+h1. Watchtower
+
+Copyright (c) 2009 Josh Clayton, released under the MIT license
