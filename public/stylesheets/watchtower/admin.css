@@ -1,0 +1,53 @@
+/** =admin.css
+************************************************************
+@project  FusionaryFramework
+@note     Styles for the control panel and front end administration
+************************************************************/
+
+/** =nav-admin
+************************************************************/
+.nav-admin {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: url(/assets/images/nav-admin-shadow.png) repeat-x;
+  z-index: 1000;
+  font-size: 11px;
+  text-align: right;
+  color: #ccc;
+  padding-top: 10px;
+}
+.nav-admin .inner {
+  padding: 3px 0;
+  height: 18px;
+  background: #000;
+  border-bottom: 2px #fff solid;
+}
+.nav-admin ul {
+  margin-right: 10px;
+}
+.nav-admin ul,
+.nav-admin .greeting {
+  display: inline;
+}
+.nav-admin li {
+  margin-left: 9px;
+  padding-left: 10px;
+  border-left: 1px solid #6c6759;
+}
+.nav-admin a,
+.nav-admin a:hover {
+  background: none;
+  color: #fff;
+}
+.nav-admin a:hover {
+  text-decoration: underline;
+}
+.nav-admin .greeting {
+  font-style: italic;
+}
+.nav-admin .edit a {
+  background: url(/assets/images/icons/edit-template.gif) no-repeat 0 50%;
+  padding-left: 15px;
+}

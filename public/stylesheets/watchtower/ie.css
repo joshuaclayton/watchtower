@@ -1,0 +1,31 @@
+/** =ie.css
+************************************************************
+@project  FusionaryFramework
+************************************************************/
+
+/** =hasLayout
+************************************************************/
+.vnav a { zoom: 1; }
+
+/** =min-height
+************************************************************/
+* html .box { height: 32px; }
+* html .box.single-line {
+  min-height: 0;
+}
+
+/** =z-index
+************************************************************/
+
+/** =buttons
+************************************************************
+@see    http://www.filamentgroup.com/lab/styling_the_button_element_with_sliding_doors
+@see    http://git.fusionary.com/?p=fusionary/build_tools.git
+************************************************************/
+button.btn { 
+  width:auto; 
+  overflow:visible; 
+} 
+button.btn {
+  zoom: 1;
+}

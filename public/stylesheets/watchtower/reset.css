@@ -1,0 +1,235 @@
+/** =reset.css
+************************************************************
+@project  FusionaryFramework
+@see      http://meyerweb.com/eric/thoughts/2008/01/15/resetting-again/
+@note     added .reset to element list and list-style: none to declaration
+************************************************************/
+.reset, .reset li, .reset dt, .reset dd, html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	list-style: none;
+}
+
+/* =inline elements */
+strong              { font-weight: bold; }
+cite, em, var, dfn  { font-style: italic; }
+abbr[title]         { text-transform: lowercase; font-variant: small-caps; letter-spacing: 0.1em; cursor:help; }
+a abbr[title]       { cursor: pointer; }
+ins                 { text-decoration: none; border-bottom: 1px dotted; }
+a ins               { border: 0; }
+del                 { text-decoration: line-through; }
+sup,sub             { font-size: 80%; }
+sup                 { vertical-align: super; }
+sub                 { vertical-align: sub; }
+
+/* =quotes */
+blockquote, q { quotes: none; }
+
+/* =address */
+address { font-style: normal; }
+
+/* =images */
+img { max-width: 100%; }
+
+/* =pre */
+pre { overflow-x: auto; }
+
+/** =utility classes
+************************************************************/
+.hide,
+.js .js-hide,
+.js-show      { display: none; }
+.js .js-show  { display: block; }
+.access       { position: absolute; left: -999em !important; }
+
+.right        { float: right !important; }
+.left	        { float: left !important; }
+.clear        { clear: both !important; }
+.center       { display: block !important; margin-left: auto !important; margin-right: auto !important; float: none !important; }
+
+.text-right   { text-align: right !important; }
+.text-left    { text-align: left !important; }
+.text-center  { text-align: center !important; }
+
+.uppercase    { text-transform: uppercase !important;}
+.lowercase    { text-transform: lowercase !important;}
+.capitalize   { text-transform: capitalize !important;}
+.smallcaps    { text-transform: small-caps !important;}
+
+.no-border    { border: none !important; }
+.no-bullet li  {
+  padding: 0 !important;
+  background: none !important;
+}
+
+.hnav, .hnav li,
+.vnav, .vnav li,
+.inav, .inav li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-image: none;
+}
+.hnav li      { float: left; display: inline; }
+.hnav a,
+.vnav a       { display: block; }
+.inav li      { display: inline; }
+
+a.img,
+a.img img,
+a.img:hover {
+  border: none;
+  background: none;
+  text-decoration: none;
+  display: block;
+}
+
+/** =group (clearfix)
+************************************************************
+@see  http://www.positioniseverything.net/easyclearing.html
+************************************************************/
+.group:after,
+.content:after,
+.block:after,
+.hnav:after,
+.text:after,
+.select:after,
+.file:after { content: " "; display: block; font-size: 0; height: 0; clear: both; visibility: hidden; }
+
+.group,
+.content,
+.block,
+.hnav,
+.text,
+.select,
+.file { display: inline-block; }
+* html .group,
+* html .content,
+* html .mod,
+* html .hnav,
+* html .text,
+* html .select,
+* html .file  { height: 1%; }
+
+.group,
+.content,
+.block,
+.hnav,
+.text,
+.select,
+.file { display: block; }
+
+/** =grid
+************************************************************
+@see  http://blueprint-generator.kaizeku.com/
+@see  http://www.jdclayton.com/blueprints_compress_a_walkthrough.html
+************************************************************/
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-13, .col-14, .col-15, .col-16, .col-17, .col-18, .col-19, .col-20, .col-21, .col-22, .col-23, .col-24 { float:left; margin-right:10px; }
+.col-1  { width:30px; }
+.col-2  { width:70px; }
+.col-3  { width:110px; }
+.col-4  { width:150px; }
+.col-5  { width:190px; }
+.col-6  { width:230px; }
+.col-7  { width:270px; }
+.col-8  { width:310px; }
+.col-9  { width:350px; }
+.col-10 { width:390px; }
+.col-11 { width:430px; }
+.col-12 { width:470px; }
+.col-13 { width:510px; }
+.col-14 { width:550px; }
+.col-15 { width:590px; }
+.col-16 { width:630px; }
+.col-17 { width:670px; }
+.col-18 { width:710px; }
+.col-19 { width:750px; }
+.col-20 { width:790px; }
+.col-21 { width:830px; }
+.col-22 { width:870px; }
+.col-23 { width:910px; }
+.col-24 { width:950px; margin:0; }
+
+.col-last { margin-right: 0; }
+
+.append-1  { padding-right:40px; }
+.append-2  { padding-right:80px; }
+.append-3  { padding-right:120px; }
+.append-4  { padding-right:160px; }
+.append-5  { padding-right:200px; }
+.append-6  { padding-right:240px; }
+.append-7  { padding-right:280px; }
+.append-8  { padding-right:320px; }
+.append-9  { padding-right:360px; }
+.append-10 { padding-right:400px; }
+.append-11 { padding-right:440px; }
+.append-12 { padding-right:480px; }
+.append-13 { padding-right:520px; }
+.append-14 { padding-right:560px; }
+.append-15 { padding-right:600px; }
+.append-16 { padding-right:640px; }
+.append-17 { padding-right:680px; }
+.append-18 { padding-right:720px; }
+.append-19 { padding-right:760px; }
+.append-20 { padding-right:800px; }
+.append-21 { padding-right:840px; }
+.append-22 { padding-right:880px; }
+.append-23 { padding-right:920px; }
+
+.prepend-1  { padding-left:40px; }
+.prepend-2  { padding-left:80px; }
+.prepend-3  { padding-left:120px; }
+.prepend-4  { padding-left:160px; }
+.prepend-5  { padding-left:200px; }
+.prepend-6  { padding-left:240px; }
+.prepend-7  { padding-left:280px; }
+.prepend-8  { padding-left:320px; }
+.prepend-9  { padding-left:360px; }
+.prepend-10 { padding-left:400px; }
+.prepend-11 { padding-left:440px; }
+.prepend-12 { padding-left:480px; }
+.prepend-13 { padding-left:520px; }
+.prepend-14 { padding-left:560px; }
+.prepend-15 { padding-left:600px; }
+.prepend-16 { padding-left:640px; }
+.prepend-17 { padding-left:680px; }
+.prepend-18 { padding-left:720px; }
+.prepend-19 { padding-left:760px; }
+.prepend-20 { padding-left:800px; }
+.prepend-21 { padding-left:840px; }
+.prepend-22 { padding-left:880px; }
+.prepend-23 { padding-left:920px; }
+
+/** =grid for form inputs
+************************************************************
+@note column width minus left and right padding and borders
+************************************************************/
+fieldset.col-1  input, fieldset.col-1  textarea,  input.col-1,  textarea.col-1  { width:24px; }
+fieldset.col-2  input, fieldset.col-2  textarea,  input.col-2,  textarea.col-2  { width:64px; }
+fieldset.col-3  input, fieldset.col-3  textarea,  input.col-3,  textarea.col-3  { width:104px;}
+fieldset.col-4  input, fieldset.col-4  textarea,  input.col-4,  textarea.col-4  { width:144px; }
+fieldset.col-5  input, fieldset.col-5  textarea,  input.col-5,  textarea.col-5  { width:184px; }
+fieldset.col-6  input, fieldset.col-6  textarea,  input.col-6,  textarea.col-6  { width:224px; }
+fieldset.col-7  input, fieldset.col-7  textarea,  input.col-7,  textarea.col-7  { width:264px; }
+fieldset.col-8  input, fieldset.col-8  textarea,  input.col-8,  textarea.col-8  { width:304px; }
+fieldset.col-9  input, fieldset.col-9  textarea,  input.col-9,  textarea.col-9  { width:344px; }
+fieldset.col-10 input, fieldset.col-10 textarea,  input.col-10, textarea.col-10 { width:384px; }
+fieldset.col-11 input, fieldset.col-11 textarea,  input.col-11, textarea.col-11 { width:424px; }
+fieldset.col-12 input, fieldset.col-12 textarea,  input.col-12, textarea.col-12 { width:464px; }
+fieldset.col-13 input, fieldset.col-13 textarea,  input.col-13, textarea.col-13 { width:504px; }
+fieldset.col-14 input, fieldset.col-14 textarea,  input.col-14, textarea.col-14 { width:544px; }
+fieldset.col-15 input, fieldset.col-15 textarea,  input.col-15, textarea.col-15 { width:584px; }
+fieldset.col-16 input, fieldset.col-16 textarea,  input.col-16, textarea.col-16 { width:624px; }
+fieldset.col-17 input, fieldset.col-17 textarea,  input.col-17, textarea.col-17 { width:664px; }
+fieldset.col-18 input, fieldset.col-18 textarea,  input.col-18, textarea.col-18 { width:704px; }
+fieldset.col-19 input, fieldset.col-19 textarea,  input.col-19, textarea.col-19 { width:744px; }
+fieldset.col-20 input, fieldset.col-20 textarea,  input.col-20, textarea.col-20 { width:784px; }
+fieldset.col-21 input, fieldset.col-21 textarea,  input.col-21, textarea.col-21 { width:824px; }
+fieldset.col-22 input, fieldset.col-22 textarea,  input.col-22, textarea.col-22 { width:864px; }
+fieldset.col-23 input, fieldset.col-23 textarea,  input.col-23, textarea.col-23 { width:904px; }
+fieldset.col-24 input, fieldset.col-24 textarea,  input.col-24, textarea.col-24 { width:944px; margin:0; }

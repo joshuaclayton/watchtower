@@ -1,0 +1,311 @@
+/** =forms.css
+************************************************************
+@project  FusionaryFramwork
+************************************************************/
+
+/** =image replacement
+************************************************************/
+.hform .error-message {
+  text-indent: -999em; display: block; font-size: 1px !important; overflow: hidden;
+}
+
+/** =inputs
+************************************************************
+@note Wrap inputs with a div and class with the type (text, select, file, etc)
+@note Textareas and password input should get a text class as well as a textarea/password class as need for styling
+************************************************************/
+input, select, textarea, button { margin: 0; }
+input, select, textarea, button, label { vertical-align: middle; }
+
+.text,
+.textarea,
+.select,
+.file,
+fieldset {
+  position: relative;
+}
+.text,
+.textarea,
+.select,
+.file,
+fieldset.multi-line {
+	margin: 0 0 1em;
+}
+.text,
+.textarea,
+.select,
+.file,
+fieldset,
+.actions {
+  clear: both;
+}
+textarea,
+.text input {
+	background: #f3f3f3;
+	border:1px solid #bbb;
+	border-top-width: 2px;
+	border-bottom-color: #e2e1dd;
+	color: #525252;
+	padding: 2px;
+	font-size: 14px;
+	overflow-y: auto;
+}
+textarea,
+.text input,
+.error.text input:focus,
+.error.text textarea:focus {
+  border-color: #bbb;
+  border-bottom-color: #e2e1dd;
+}
+select,
+textarea,
+.text input,
+.file input {
+	display: block;
+}
+textarea {
+  height: 80px;
+}
+textarea:focus,
+.text input:focus	{
+	background-color: #fdffed;
+}
+.fancy input {
+  font-weight: bold;
+	letter-spacing: -.015em;
+	font-size: 16px;
+}
+fieldset.multi-line .text {
+  margin-bottom: .25em;
+}
+.checkbox input,
+.radio input,
+.file input {
+  width: auto !important; /* ensures widths do not get set with grid classes */
+}
+
+/** =labels
+************************************************************/
+label { cursor: pointer; }
+.text label,
+.select label,
+.file label {
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1;
+}
+.checkbox label,
+.radio label {
+  margin-left: .25em;
+}
+
+/** =legends
+************************************************************/
+.legend {
+  color: #acacac;
+  font-weight: normal;
+  font-size: 16px;
+  border-bottom: 1px solid #cacaca;
+  padding: 0 0 .25em;
+  margin-bottom: .75em;
+}
+
+/** =fieldsets
+************************************************************/
+fieldset { margin: 0 0 1.5em; }
+
+/** =actions
+************************************************************
+@note container for submit buttons, reset, cancel, etc.
+************************************************************/
+.actions {
+  text-align: right;
+  border-top: 2px solid #cacaca;
+  padding-top: 1.5em;
+}
+
+/** =hform
+************************************************************
+@note Horizontal form (labels and fields side by side)
+************************************************************/
+.hform .text label,
+.hform .select label,
+.hform .file label,
+.hform .text input,
+.hform .select input,
+.hform .file input,
+.hform select,
+.hform textarea {
+  float: left
+}
+.hform .text,
+.hform .select,
+.hform .file {
+  clear: left;
+}
+.hform label {
+  text-align: right;
+}
+.hform .text label {
+  padding: 6px 0 0;
+}
+.hform .fancy label {
+  padding: 8px 0 0;
+}
+.hform .file label,
+.hform .select label {
+  line-height: 1.4; /* align label in Firefox */
+}
+.hform .actions {
+  margin-top: .25em;
+}
+
+/** =vform
+************************************************************
+@note   Vertical form (labels on top of fields)
+************************************************************/
+
+/* @note  for easy switching between vform and hform, othewise just use the 'access' class */
+.vform label.replace {
+  position: absolute;
+  left: -999em;
+}
+.vform label {
+  margin-bottom: .15em;
+}
+
+/** =flash messages
+************************************************************/
+.box {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #F0F0F0;
+  color: #555;
+  min-height: 40px;
+}
+.box.single-line {
+  padding: 15px 10px;
+  min-height: 0;
+  background-position: 10px 50% !important;
+}
+.box.error    { background-color: #FBE3E4; border-color: #FBC2C4; }
+.box.notice   { background-color: #FFF6BF; border-color: #FFD324; }
+.box.success  { background-color: #E6EFC2; border-color: #C6D880; }
+
+.box.error,
+.box.notice,
+.box.success {
+  background-repeat: no-repeat;
+  background-position: 10px 13px;
+  padding-left: 50px;
+}
+
+.box.error    { background-image: url(/assets/images/icons/caution-sign-red.png) }
+.box.notice   { background-image: url(/assets/images/icons/caution-sign.png) }
+.box.success  { background-image: url(/assets/images/icons/success-badge.png) }
+
+.box a,
+.box a:hover {
+  background: none;
+  border: 0;
+  color: #555;
+}
+.box.error, .box.error a      { color: #D12F19; }
+.box.notice, .box.notice a    { color: #695E52; }
+.box.success, .box.success a  { color: #3D6C10; }
+.box a { text-decoration: underline; }
+
+/** =defaulttext jquery plugin
+************************************************************
+@see git.fusionary.com/fusionary/ee/default_install.git
+************************************************************/
+.default-text {
+  font-style: italic;
+  padding: 10px 6px 0;
+}
+
+/** =ajax form submission
+************************************************************/
+form {
+  position: relative;
+}
+form .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 100;
+}
+.actions {
+  position: relative;
+}
+.loading {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background: #fff;
+  padding-top: 1.5em;
+  font-style: italic;
+  font-weight: bold;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+.loading img {
+  vertical-align: middle;
+  margin-left: 5px;
+}
+.error-summary {
+  margin-top: 1.5em;
+}
+.error-summary p {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/** =validation
+************************************************************/
+.error input, .error textarea {
+  border-color: #c69b9b;
+  border-bottom-color: #efcaca;
+  background-color: #FBE3E4;
+}
+.error label,
+.error label span.required-mark { color: #D12F19; }
+.error-message {
+  font-size: 11px;
+  color: #D12F19;
+  font-weight: normal;
+}
+.error-summary .error-message {
+  margin-left: 5px;
+}
+.error-summary li {
+  background: none;
+  padding: 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.hform .error-message,
+.vform .error-message{
+  position: absolute;
+}
+.hform .error-message {
+	background: url(/assets/images/icons/caution-sign-sm.png) no-repeat;
+	width: 17px;
+	height: 16px;
+  top: 6px;
+  right: -22px;
+}
+.vform .error-message,
+.radios .error-message,
+.checkboxes .error-message {
+  top: -1px;
+  right: 0;
+}

@@ -8,7 +8,7 @@ class WatchedExceptionsPresenter
     scope = scope.scoped_by_controller_name(params[:controller_name]) if params[:controller_name]
     scope = scope.scoped_by_controller_action(params[:controller_action]) if params[:controller_action]
     scope = scope.scoped_by_exception_class(params[:exception_class]) if params[:exception_class]
-    @watched_exceptions = scope.paginate(:page => params[:page], :per_page => 20)
+    @watched_exceptions = scope.paginate(:page => params[:page], :per_page => 10)
   end
   
   def each(&block)

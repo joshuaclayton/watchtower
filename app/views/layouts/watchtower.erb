@@ -3,7 +3,8 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Watchtower</title>
-    <%= stylesheet_link_tag "watchtower/screen" %>
+    <%= stylesheet_link_tag "watchtower/reset", "watchtower/screen", "watchtower/forms", "watchtower/extras", "watchtower/admin", "watchtower/watchtower" %>
+    <%= stylesheet_link_tag "watchtower/print", :media => "print" %>
     <!--[if lt IE 8]>
       <%= stylesheet_link_tag "watchtower/ie" %>
     <![endif]-->
@@ -11,12 +12,14 @@
     <%= yield :head %>
   </head>
   <body>
-    <div class="container content">
-      <div class="header">
-        <h1>Watchtower</h1>
+    <div class="container">
+      <div class="header col-24">
+        <h1><%= link_to "Watchtower", watchtower_index_path %></h1>
       </div>
-      <%= yield %>
-      <div class="footer">
+      <div class="content col-24">
+        <%= yield %>
+      </div>
+      <div class="footer col-24">
         <p>Copyright &copy;2009</p>
       </div>
     </div>

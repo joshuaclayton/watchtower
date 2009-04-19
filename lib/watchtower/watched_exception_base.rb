@@ -4,6 +4,7 @@ module Watchtower
       base.send :include, Callbacks
       base.send :include, Validations
       base.send :include, Scopes
+      base.send :include, InstanceMethods
       base.extend ClassMethods
     end
     
@@ -74,5 +75,12 @@ module Watchtower
         all(:select => "DISTINCT controller_action", :order => "controller_action").collect(&:controller_action)
       end
     end
+    
+    module InstanceMethods
+      def name
+        "#{self.exception_class} in #{self.controller_action}"
+      end
+    end
+    
   end
 end

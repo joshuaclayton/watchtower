@@ -1,12 +1,12 @@
-<div class="content-main">
+<div class="content-left col-18">
   <div id="watched-exceptions-recordset">
     <%= render :partial => "recordset", :locals => {:watched_exceptions => @watched_exceptions} %>
   </div>
 </div>
-<div class="content-extra">
+<div class="content-right col-6 col-last">
   <ul class="filter-exception_class">
     <% WatchedException.exception_classes.each do |exception_class| %>
-      <li><%= exception_class %></li>
+      <li><%= link_to exception_class, watchtower_index_path(:exception_class => exception_class) %></li>
     <% end %>
   </ul>
   <ul class="filter-controller_action">
@@ -15,23 +15,19 @@
     <% end %>
   </ul>
 </div>
-<% content_for :head do %>
-  <style type="text/css">
-    .active-filter {background: red;}
-  </style>
-<% end %>
 <% content_for :footer do %>
   <script type="text/javascript">
     (function($) {
       var watchtower = $.watchtower({recordset: $("#watched-exceptions-recordset")});
       
-      $("ul[class^=filter-] li").each(function(idx, li) {
-        var $li     = $(li),
-            filter  = $li.parent().attr("class").replace("filter-", ""),
-            name    = $li.text();
+      $("ul[class^=filter-] li a").each(function(idx, a) {
+        var $a     = $(a),
+            filter  = $a.parent().parent().attr("class").replace("filter-", ""),
+            name    = $a.text();
+        console.log(filter);
         
-        $li.click(function() {
-          var item = $(this);
+        $a.click(function(e) {
+          var item = $(this).parent();
           if(item.hasClass("active-filter")) {
             watchtower.filters(filter).clear(function() {
               item.removeClass("active-filter");
@@ -42,6 +38,8 @@
               item.addClass("active-filter");
             });
           }
+          e.preventDefault();
+          return false;
         });
       });
       
