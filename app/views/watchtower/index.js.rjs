@@ -1,0 +1,2 @@
+result = render :partial => "recordset", :locals => {:watched_exceptions => @watched_exceptions}
+page << "#{@callback}('#{escape_javascript(result)}')" if @callback

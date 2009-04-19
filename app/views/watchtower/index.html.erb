@@ -1,5 +1,7 @@
 <div class="content-main">
-  <%= render :partial => "recordset", :locals => {:watched_exceptions => @watched_exceptions} %>
+  <div id="watched-exceptions-recordset">
+    <%= render :partial => "recordset", :locals => {:watched_exceptions => @watched_exceptions} %>
+  </div>
 </div>
 <div class="content-extra">
   <ul class="filter-exception_class">
@@ -13,10 +15,15 @@
     <% end %>
   </ul>
 </div>
+<% content_for :head do %>
+  <style type="text/css">
+    .active-filter {background: red;}
+  </style>
+<% end %>
 <% content_for :footer do %>
   <script type="text/javascript">
     (function($) {
-      var watchtower = $.watchtower();
+      var watchtower = $.watchtower({recordset: $("#watched-exceptions-recordset")});
       
       $("ul[class^=filter-] li").each(function(idx, li) {
         var $li     = $(li),
@@ -24,16 +31,26 @@
             name    = $li.text();
         
         $li.click(function() {
-          watchtower.filters(filter).clear();
-          
-          if($li.hasClass("active-filter")) {
-            $li.removeClass("active-filter");
+          var item = $(this);
+          if(item.hasClass("active-filter")) {
+            watchtower.filters(filter).clear(function() {
+              item.removeClass("active-filter");
+            });
           } else {
-            $li.siblings().removeClass("active-filter");
-            $li.addClass("active-filter");
-            watchtower.filters(filter).add(name);
+            watchtower.filters(filter).set(name, function() {
+              item.siblings().removeClass("active-filter");
+              item.addClass("active-filter");
+            });
           }
         });
+      });
+      
+      $(".pagination a").live("click", function(evt) {
+        var anchor = $(this);
+        console.log(evt);
+        watchtower.filters("page").set(anchor.attr("href").match(/page\=(\d+)/)[1], function() {});
+        evt.preventDefault();
+        return false;
       });
     })(jQuery);
   </script>

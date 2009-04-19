@@ -10,6 +10,7 @@ module Watchtower
     module InstanceMethods
       
       def index
+        @callback = params.delete(:callback)
         @watched_exceptions = WatchedExceptionsPresenter.new(params)
       end
       
