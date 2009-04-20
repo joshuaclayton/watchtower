@@ -1,8 +1,9 @@
+<%= will_paginate watched_exceptions %>
 <ul class="ruled watched-exceptions">
   <% watched_exceptions.each do |exception| %>
     <li>
       <h3 class="exception-class"><%= link_to exception.name, watchtower_path(exception) %></h3>
-      <span class="exception-message"><%= truncate h(exception.message), 100 %></span>
+      <span class="exception-message"><%= truncate(h(exception.message), :length => 100) %></span>
       <span class="exception-timestamp"><%= short_distance exception.created_at %></span>
     </li>
   <% end %>

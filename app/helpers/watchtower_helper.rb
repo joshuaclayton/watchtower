@@ -21,14 +21,7 @@ module WatchtowerHelper
     end
     
     result << ((amount =~ /a/).nil? ? amount : "1")
-    
-    result << case measurement
-    when /month/
-      "mo"
-    else
-      measurement.strip.split(//).first
-    end
-    
+    result << ((measurement =~ /month/).nil? ? measurement.strip.split(//).first : "mo")
     result
   end
 end

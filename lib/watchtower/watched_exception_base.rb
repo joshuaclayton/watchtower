@@ -59,7 +59,7 @@ module Watchtower
         create! :exception_class  => exception.class.name,
                 :controller_name  => controller.controller_name,
                 :action_name      => controller.action_name,
-                :backtrace        => controller.send(:clean_backtrace, exception),
+                :backtrace        => controller.send(:clean_backtrace, exception).first,
                 :request          => controller.request.inspect,
                 :parameters       => controller.request.parameters.inspect,
                 :format           => controller.request.format.to_s,

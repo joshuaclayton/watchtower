@@ -1,16 +1,26 @@
-<h2><%= @watched_exception.exception_class %> in <%= @watched_exception.controller_action %></h2>
-<h3><%= h @watched_exception.message %></h3>
-<dl>
-  <dt>Created</dt>
-  <dd><%= distance_of_time_in_words_to_now @watched_exception.created_at %> ago (<%= @watched_exception.created_at.to_s(:long) %>)</dd>
-  <dt>Parameters</dt>
-  <dd><code><%= @watched_exception.parameters %></code></dd>
-  <dt>Backtrace</dt>
-  <dd><code><pre><%= h @watched_exception.backtrace.strip %></pre></code></dd>
-  <dt>Format</dt>
-  <dd><code><%= h @watched_exception.format %></code></dd>
-  <dt>Application Path</dt>
-  <dd><code><%= h @watched_exception.application_path %></code></dd>
-  <dt>Full Request</dt>
-  <dd><code><%= h @watched_exception.request %></code></dd>
-</dl>
+<div class="content-header">
+  <h2><%= @watched_exception.name %></h2>
+  <h3><%= h @watched_exception.message %></h3>
+</div>
+<div class="col-8">
+  <dl>
+    <dt>Exception</dt>
+    <dd><code><%= @watched_exception.exception_class %></code></dd>
+    <dt>Controller / Action</dt>
+    <dd><code><%= @watched_exception.controller_action %></code></dd>
+    <dt>Parameters</dt>
+    <dd><code><%= @watched_exception.parameters %></code></dd>
+    <dt>Format</dt>
+    <dd><code><%= h @watched_exception.format %></code></dd>
+    <dt>Application Path</dt>
+    <dd><code><%= h @watched_exception.application_path %></code></dd>
+  </dl>
+</div>
+<% if @watched_exception.backtrace %>
+  <div class="col-16 col-last">
+    <dl>
+      <dt>Backtrace</dt>
+      <dd><code class="backtrace"><pre><%= h @watched_exception.backtrace.strip %></pre></code></dd>
+    </dl>
+  </div>
+<% end %>

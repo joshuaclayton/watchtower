@@ -1,9 +1,9 @@
-<div class="content-left col-18">
+<div class="col-18">
   <div id="watched-exceptions-recordset">
     <%= render :partial => "recordset", :locals => {:watched_exceptions => @watched_exceptions} %>
   </div>
 </div>
-<div class="content-right col-6 col-last">
+<div class="col-6 col-last">
   <ul class="filter-exception_class">
     <% WatchedException.exception_classes.each do |exception_class| %>
       <li><%= link_to exception_class, watchtower_index_path(:exception_class => exception_class) %></li>
@@ -11,7 +11,7 @@
   </ul>
   <ul class="filter-controller_action">
     <% WatchedException.controller_actions.each do |controller_action| %>
-      <li><%= controller_action %></li>
+      <li><%= link_to controller_action, watchtower_index_path(:controller_action => controller_action) %></li>
     <% end %>
   </ul>
 </div>
@@ -24,7 +24,6 @@
         var $a     = $(a),
             filter  = $a.parent().parent().attr("class").replace("filter-", ""),
             name    = $a.text();
-        console.log(filter);
         
         $a.click(function(e) {
           var item = $(this).parent();
@@ -45,7 +44,6 @@
       
       $(".pagination a").live("click", function(evt) {
         var anchor = $(this);
-        console.log(evt);
         watchtower.filters("page").set(anchor.attr("href").match(/page\=(\d+)/)[1], function() {});
         evt.preventDefault();
         return false;
