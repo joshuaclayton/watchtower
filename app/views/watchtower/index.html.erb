@@ -10,7 +10,7 @@
       <%= form.text_field :query, :class => "col-4" %>
     </div>
     <div class="col-2 col-last right">
-      <%= form.submit "Search" %>
+      <button class="btn"><span>Search</span></button>
     </div>
   <% end %>
   <h4>Filter by Exception</h4>
@@ -29,55 +29,7 @@
 <% content_for :footer do %>
   <script type="text/javascript">
     (function($) {
-      var watchtower = $.watchtower({recordset: $("#watched-exceptions-recordset")});
-      
-      $("ul[class^=filter-] li a").each(function(idx, a) {
-        var $a     = $(a),
-            filter  = $a.parent().parent().attr("class").replace("filter-", ""),
-            name    = $a.text();
-        
-        $a.click(function(e) {
-          var item = $(this).parent();
-          if(item.hasClass("active-filter")) {
-            watchtower.filters(filter).clear(function() {
-              item.removeClass("active-filter");
-            });
-          } else {
-            watchtower.filters(filter).set(name, function() {
-              item.siblings().removeClass("active-filter");
-              item.addClass("active-filter");
-            });
-          }
-          e.preventDefault();
-          return false;
-        });
-      });
-      
-      $(".pagination a").live("click", function(evt) {
-        var anchor = $(this);
-        watchtower.filters("page").set(anchor.attr("href").match(/page\=(\d+)/)[1], function() {});
-        evt.preventDefault();
-        return false;
-      });
-      
-      $("#watchtower-search").submit(function(e) {
-        var $form = $(this);
-        watchtower.filters("query").set($("input[type=text]", $form).val(), function() {});
-        e.preventDefault();
-        return false;
-      });
-      
-      $(document).keydown(function(e) {
-        if (/(input|textarea|select)/i.test(e.target.nodeName)) { return; }
-
-        if(e.which == "37") { /* left */
-          e.preventDefault();
-          $(".pagination a[rel*=prev]:first").trigger("click");
-        } else if(e.which == "39") { /* right */
-          e.preventDefault();
-          $(".pagination a[rel*=next]:first").trigger("click");
-        }
-      });
+      $.watchtower();
     })(jQuery);
   </script>
 <% end %>

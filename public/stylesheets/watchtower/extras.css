@@ -1,9 +1,10 @@
  /** =extras.css
 ************************************************************
-@project  FusionaryFramework
+@project  Easel
 @note     Reference and reusable techniques best kept out of the screen.css
 @note     Import into screen.css or just copy/paste as needed
 @note     Stick anything that may be able to be reused in here
+@fontdef  "Bradley Hand ITC", "Apple Chancery", "URW Chancery L", cursive; script/cursive
 ************************************************************/
 
 /** =css3 rounded corners for nice browsers
@@ -12,6 +13,7 @@
   border-radius: 1em;
 	-moz-border-radius: 1em;
 	-webkit-border-radius: 1em;
+	padding: 1em;
 }
 
 /** =Safari 3 and 4 fix for light on dark text
@@ -71,7 +73,7 @@ button::-moz-focus-inner { border: none; padding: 0;}
 /* using a sprite instead of four separate images... */
 button.btn,
 button.btn span {
-  background-image: url(/assets/images/buttons/sprite-gray.png);
+  background-image: url(assets/images/buttons/sprite-gray.png);
   background-repeat: no-repeat;
 }
 button.btn {background-position:  100% 0;}

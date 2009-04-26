@@ -20,7 +20,6 @@ Set up ApplicationController
 
 If you want to secure the data, you might want to set up an initializer:
 
-    # config/initializers/watchtower.rb
     WatchtowerController.class_eval do
       before_filter :check_credentials
       

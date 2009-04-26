@@ -64,7 +64,8 @@ textarea,
 	display: block;
 }
 textarea {
-  height: 80px;
+  min-height: 80px;
+  line-height: 1.2em; /* for jquery.autogrow */
 }
 textarea:focus,
 .text input:focus	{
@@ -201,9 +202,9 @@ fieldset { margin: 0 0 1.5em; }
   padding-left: 50px;
 }
 
-.box.error    { background-image: url(/assets/images/icons/caution-sign-red.png) }
-.box.notice   { background-image: url(/assets/images/icons/caution-sign.png) }
-.box.success  { background-image: url(/assets/images/icons/success-badge.png) }
+.box.error    { background-image: url(assets/images/icons/caution-sign-red.png) }
+.box.notice   { background-image: url(assets/images/icons/caution-sign.png) }
+.box.success  { background-image: url(assets/images/icons/success-badge.png) }
 
 .box a,
 .box a:hover {
@@ -297,7 +298,7 @@ form .overlay {
   position: absolute;
 }
 .hform .error-message {
-	background: url(/assets/images/icons/caution-sign-sm.png) no-repeat;
+	background: url(assets/images/icons/caution-sign-sm.png) no-repeat;
 	width: 17px;
 	height: 16px;
   top: 6px;

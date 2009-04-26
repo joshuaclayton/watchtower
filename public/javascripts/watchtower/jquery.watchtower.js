@@ -2,8 +2,7 @@
   var $doc = $(document);
   
   $.watchtower = function(options) {
-    var $recordset = $(options.recordset);
-    
+    var $recordset = $("#watched-exceptions-recordset");
     var self = {
       params: {},
       data: {
@@ -11,7 +10,6 @@
           $recordset.html(html);
         },
         update: function(callback, fn) {
-          console.log($.extend({callback: callback}, self.params));
           $.get("/watchtower", $.extend({callback: callback}, self.params), function(data) { eval(data); fn(); console.log("completed ajax"); });
         }
       },
@@ -22,13 +20,11 @@
           set: function(filter, fn) {
             if(self.params[name]) { $doc.trigger("watchtower-filter-remove", {filter: filter, name: name}); }
             self.params[name] = filter;
-            $doc.trigger("watchtower-filter-add", {filter: filter, name: name, callback: fn});
             watchtower.data.update("$(document).data('watchtower').data.handleResult", fn);
           },
           clear: function(fn) {
             var oldFilter = self.params[name];
             delete(self.params[name]);
-            $doc.trigger("watchtower-filter-remove", {filter: oldFilter, name: name, callback: fn});
             watchtower.data.update("$(document).data('watchtower').data.handleResult", fn);
           }
         };
@@ -36,22 +32,58 @@
     };
     
     $doc.data("watchtower", self);
-    $.watchtower.bindings();
     return $doc.data("watchtower");
   };
   
-  $.watchtower.bindings = function() {
-    $doc.bind("watchtower-filter-add", function(event, info) {
-      console.log("triggered add");
-      $doc.trigger("watchtower-filter-change", info);
+  $(function() {
+    var watchtower = $doc.data("watchtower");
+    
+    $(".pagination a").live("click", function(evt) {
+      var anchor = $(this);
+      watchtower.filters("page").set(anchor.attr("href").match(/page\=(\d+)/)[1], function() {});
+      evt.preventDefault();
+      return false;
+    });
+
+    $("#watchtower-search").submit(function(e) {
+      var $form = $(this);
+      watchtower.filters("query").set($("input[type=text]", $form).val(), function() {});
+      e.preventDefault();
+      return false;
+    });
+
+    $(document).keydown(function(e) {
+      if (/(input|textarea|select)/i.test(e.target.nodeName)) { return; }
+
+      if(e.which == "37") { /* left */
+        e.preventDefault();
+        $(".pagination a[rel*=prev]:first").trigger("click");
+      } else if(e.which == "39") { /* right */
+        e.preventDefault();
+        $(".pagination a[rel*=next]:first").trigger("click");
+      }
     });
     
-    $doc.bind("watchtower-filter-remove", function(event, info) {
-      console.log("triggered remove");
-      $doc.trigger("watchtower-filter-change", info);
+    $("ul[class^=filter-] li a").each(function(idx, a) {
+      var $a     = $(a),
+          filter  = $a.parent().parent().attr("class").replace("filter-", ""),
+          name    = $a.text();
+      
+      $a.click(function(e) {
+        var item = $(this).parent();
+        if(item.hasClass("active-filter")) {
+          watchtower.filters(filter).clear(function() {
+            item.removeClass("active-filter");
+          });
+        } else {
+          watchtower.filters(filter).set(name, function() {
+            item.siblings().removeClass("active-filter");
+            item.addClass("active-filter");
+          });
+        }
+        e.preventDefault();
+        return false;
+      });
     });
-    
-    $doc.bind("watchtower-filter-change", function(event, info) {
-    });
-  };
+  });
 })(jQuery);

@@ -1,6 +1,6 @@
 /** =admin.css
 ************************************************************
-@project  FusionaryFramework
+@project  Easel
 @note     Styles for the control panel and front end administration
 ************************************************************/
 
@@ -11,7 +11,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background: url(/assets/images/nav-admin-shadow.png) repeat-x;
+  background: url(assets/images/nav-admin-shadow.png) repeat-x;
   z-index: 1000;
   font-size: 11px;
   text-align: right;
@@ -46,8 +46,15 @@
 }
 .nav-admin .greeting {
   font-style: italic;
+  margin-right: 1.5em;
 }
 .nav-admin .edit a {
-  background: url(/assets/images/icons/edit-template.gif) no-repeat 0 50%;
+  background: url(assets/images/icons/edit-template.gif) no-repeat 0 50%;
   padding-left: 15px;
+}
+
+/** =content entry callouts
+************************************************************/
+.highlight {
+  background-color: rgba(255, 255, 0, .2);
 }

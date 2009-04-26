@@ -1,6 +1,6 @@
 /** =reset.css
 ************************************************************
-@project  FusionaryFramework
+@project  Easel
 @see      http://meyerweb.com/eric/thoughts/2008/01/15/resetting-again/
 @note     added .reset to element list and list-style: none to declaration
 ************************************************************/
@@ -130,30 +130,30 @@ a.img:hover {
 @see  http://www.jdclayton.com/blueprints_compress_a_walkthrough.html
 ************************************************************/
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-13, .col-14, .col-15, .col-16, .col-17, .col-18, .col-19, .col-20, .col-21, .col-22, .col-23, .col-24 { float:left; margin-right:10px; }
-.col-1  { width:30px; }
-.col-2  { width:70px; }
-.col-3  { width:110px; }
-.col-4  { width:150px; }
-.col-5  { width:190px; }
-.col-6  { width:230px; }
-.col-7  { width:270px; }
-.col-8  { width:310px; }
-.col-9  { width:350px; }
-.col-10 { width:390px; }
-.col-11 { width:430px; }
-.col-12 { width:470px; }
-.col-13 { width:510px; }
-.col-14 { width:550px; }
-.col-15 { width:590px; }
-.col-16 { width:630px; }
-.col-17 { width:670px; }
-.col-18 { width:710px; }
-.col-19 { width:750px; }
-.col-20 { width:790px; }
-.col-21 { width:830px; }
-.col-22 { width:870px; }
-.col-23 { width:910px; }
-.col-24 { width:950px; margin:0; }
+fieldset.col-1  select, .col-1  { width:30px; }
+fieldset.col-2  select, .col-2  { width:70px; }
+fieldset.col-3  select, .col-3  { width:110px; }
+fieldset.col-4  select, .col-4  { width:150px; }
+fieldset.col-5  select, .col-5  { width:190px; }
+fieldset.col-6  select, .col-6  { width:230px; }
+fieldset.col-7  select, .col-7  { width:270px; }
+fieldset.col-8  select, .col-8  { width:310px; }
+fieldset.col-9  select, .col-9  { width:350px; }
+fieldset.col-10 select, .col-10 { width:390px; }
+fieldset.col-11 select, .col-11 { width:430px; }
+fieldset.col-12 select, .col-12 { width:470px; }
+fieldset.col-13 select, .col-13 { width:510px; }
+fieldset.col-14 select, .col-14 { width:550px; }
+fieldset.col-15 select, .col-15 { width:590px; }
+fieldset.col-16 select, .col-16 { width:630px; }
+fieldset.col-17 select, .col-17 { width:670px; }
+fieldset.col-18 select, .col-18 { width:710px; }
+fieldset.col-19 select, .col-19 { width:750px; }
+fieldset.col-20 select, .col-20 { width:790px; }
+fieldset.col-21 select, .col-21 { width:830px; }
+fieldset.col-22 select, .col-22 { width:870px; }
+fieldset.col-23 select, .col-23 { width:910px; }
+fieldset.col-24 select, .col-24 { width:950px; margin:0; }
 
 .col-last { margin-right: 0; }
 

@@ -1,10 +1,7 @@
  /** =screen.css
 ************************************************************
-@project    FusionaryFramework
-@colordef   #808080; dark gray (body copy)
-@colordef   #6aa000; lime green (link)
-@colordef   #517805; darker lime green (link hover)
-@colordef   #eafbd8; light green (link hover bg)
+@project    Easel
+@colordef   #222222; dark gray (body copy)
 ************************************************************/
 
 /** =fonts
@@ -41,7 +38,7 @@ ol li { list-style: decimal; }
 ul li { list-style: none; }
 dt { font-weight: bold; }
 ul li {
-  background: url(/assets/images/bullet-black.png) no-repeat 0 .5em;
+  background: url(assets/images/bullet-black.png) no-repeat 0 .5em;
   padding-left: .75em;
 }
 dt { font-weight: bold; }
@@ -107,10 +104,9 @@ a.block img {
 }
 
 /* =inline images */
-p img, img.left, a.img.left img { margin: 0 1em .75em 0; float:left; }
-img.right, a.img.right img      { margin: 0 0 .75em 1em; }
-p img { margin-top: .75em; }
-img.top, a.top.img  { margin-top: 0;}
+p img, p img.left, p a.img.left img, p .captioned   { margin: .75em 1.25em .75em 0; float:left; display: inline; }
+p img.right, p a.img.right img, p .captioned.right  { margin: .75em 0 .75em 1.25em; }
+p .top, p .top img { margin-top: 0 !important; }
 
 /* =margins */
 .no-margin     { margin-bottom: 0; }
@@ -139,8 +135,8 @@ a.framed:hover img {
 }
 
 /* =text */
-.small      { font-size: 11px; }
-.large      { font-size: 16px; }
+.small          { font-size: 11px; }
+.large          { font-size: 16px; }
 .caps, .numbers { letter-spacing: 0.1em } 
 .note {
   font-size: 11px;
@@ -159,10 +155,33 @@ a.framed:hover img {
   padding-left: .66em;
 }
 .inav li:first-child,
-.inav .li-1{
+.inav .li-1 {
   padding-left: 0;
   margin-left: 0;
   border-left: 0;
+}
+
+/* =captioned images */
+.captioned img,
+.captioned .img,
+.captioned .caption{
+  display: block;
+}
+.captioned .img{
+  background: #000;
+}
+.captioned img{
+  float: none;
+  margin: 0 auto;
+}
+.captioned .caption {
+	font-size: 11px;
+	text-align: right;
+  color: #999;
+}
+.captioned {
+  margin-bottom: .75em;
+  display: block;
 }
 
 /** =layout
