@@ -10,7 +10,6 @@ module Watchtower
     module InstanceMethods
       
       def index
-        @callback = params.delete(:callback)
         @watched_exceptions = WatchedExceptionsPresenter.new(params)
       end
       
@@ -18,6 +17,14 @@ module Watchtower
       
       def destroy
         @watched_exception.destroy
+      end
+      
+      def destroy_multiple
+        @deleted_exceptions = WatchedException.find_all_by_id(params[:id].split(",").map(&:strip))
+        @deleted_exceptions.each do |watched_exception|
+          watched_exception.destroy
+        end
+        index
       end
       
       protected

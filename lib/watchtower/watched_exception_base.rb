@@ -24,9 +24,7 @@ module Watchtower
           self.controller_action = "#{self.controller_name}/#{self.action_name}"
         end
         
-        def clean_backtrace
-          # self.backtrace = self.
-        end
+        def clean_backtrace; end
       end
     end
     

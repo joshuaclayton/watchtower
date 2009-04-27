@@ -20,10 +20,12 @@
 
 .filter-exception_class li, .filter-controller_action li { font-size: 1.25em; }
 
-ul.watched-exceptions li { position: relative; }
+ul.watched-exceptions { padding-top: 0; }
+ul.watched-exceptions li { position: relative; margin-bottom: 0; padding-top: .66em;}
+ul.watched-exceptions li.selected { background: #f9f9f9; }
 .exception-class { font-size: 1.75em; font-weight: normal; margin-bottom: .25em; }
 .exception-message { font-size: 1.25em; color: #aaa; font-style: italic; }
-.exception-timestamp { position: absolute; right: 0; top: -.2em; font-size: 3.5em; color: #ddd; font-style: italic; }
+.exception-timestamp { position: absolute; right: 0; top: 0; font-size: 3.5em; color: #ddd; font-style: italic; }
 
 .pagination { margin-bottom: 1.5em; }
 .pagination a, .pagination span { border: 1px solid #ddd; padding: .25em .625em; }

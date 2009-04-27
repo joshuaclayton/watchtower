@@ -1,4 +1,6 @@
 <div class="col-18">
+  <a class="delete-visible" href="#">Delete Visible</a>
+  <a class="delete-selected" href="#">Delete Selected</a>
   <div id="watched-exceptions-recordset">
     <%= render :partial => "recordset", :locals => {:watched_exceptions => @watched_exceptions} %>
   </div>
@@ -29,6 +31,7 @@
 <% content_for :footer do %>
   <script type="text/javascript">
     (function($) {
+      $(document).data("authToken", "<%= form_authenticity_token %>");
       $.watchtower();
     })(jQuery);
   </script>

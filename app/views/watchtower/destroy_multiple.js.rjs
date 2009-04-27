@@ -1,2 +1,6 @@
+@deleted_exceptions.each do |watched_exception|
+  page << "$('##{dom_id(watched_exception)}').remove();"
+end
+
 result = render :partial => "recordset", :locals => {:watched_exceptions => @watched_exceptions}
 page << "$('#watched-exceptions-recordset').html('#{escape_javascript(result)}');"
