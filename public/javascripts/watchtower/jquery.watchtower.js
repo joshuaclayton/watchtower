@@ -37,41 +37,62 @@
   
   $(function() {
     var watchtower = $doc.data("watchtower");
-    $(".delete-visible").click(function(evt) {
+    $(".delete-visible").click(function() {
       $(document).trigger("delete-visible.watchtower");
     });
 
-    $(".delete-selected").click(function(evt) {
+    $(".delete-selected").click(function() {
       $(document).trigger("delete-selected.watchtower");
     });
     
-    $(".pagination a").live("click", function(evt) {
+    $(".select-all").click(function() {
+      $(document).trigger("select-all.watchtower");
+    });
+    
+    $(".select-none").click(function() {
+      $(document).trigger("select-none.watchtower");
+    });
+    
+    $(".pagination a").live("click", function() {
       watchtower.filters("page").set($(this).attr("href").match(/page\=(\d+)/)[1]);
     });
     
-    $("ul.watched-exceptions li").live("click", function(evt) {
+    $("ul.watched-exceptions li").live("click", function() {
       $(this).toggleClass("selected");
     });
 
     $("#watchtower-search").submit(function(evt) {
       watchtower.filters("query").set($("input[type=text]", $(this)).val());
-      evt.preventDefault();
       return false;
     });
 
     $(document).keydown(function(e) {
       if (/(input|textarea|select)/i.test(e.target.nodeName)) { return; }
+      
       if(e.which == "37") { /* left */
         e.preventDefault();
         $(".pagination a[rel*=prev]:first").trigger("click");
       } else if(e.which == "39") { /* right */
         e.preventDefault();
         $(".pagination a[rel*=next]:first").trigger("click");
+      } else if(String.fromCharCode(e.which) == "X") {
+        e.preventDefault();
+        $(document).trigger("delete-selected.watchtower");
+      } else if(String.fromCharCode(e.which) == "A") {
+        e.preventDefault();
+        $(document).trigger("select-all.watchtower");
+      } else if(String.fromCharCode(e.which) == "V") {
+        e.preventDefault();
+        $(document).trigger("delete-visible.watchtower");
+      } else if(String.fromCharCode(e.which) == "N") {
+        e.preventDefault();
+        $(document).trigger("select-none.watchtower");
       }
     });
     
     var deleteIds = function(elements) {
       var idsToDelete = [];
+      if(elements.length > 0 && !confirm("Are you sure you want to delete these exceptions?")) { return; }
       elements.map(function(idx, li) {
         idsToDelete.push($(li).attr("id").match(/\d+/)[0]);
       });
@@ -84,6 +105,18 @@
     
     $(document).bind("delete-selected.watchtower", function(data) {
       deleteIds($("ul.watched-exceptions li.selected"));
+    });
+    
+    $(document).bind("select-all.watchtower", function(data) {
+      $("ul.watched-exceptions li").each(function(idx, li) {
+        $(li).addClass("selected");
+      });
+    });
+    
+    $(document).bind("select-none.watchtower", function(data) {
+      $("ul.watched-exceptions li").each(function(idx, li) {
+        $(li).removeClass("selected");
+      });
     });
     
     $("ul[class^=filter-] li a").each(function(idx, a) {
@@ -103,7 +136,6 @@
             item.addClass("active-filter");
           });
         }
-        e.preventDefault();
         return false;
       });
     });

@@ -1,6 +1,8 @@
 <div class="col-18">
-  <button class="delete-visible btn" href="#"><span>Delete Visible</span></button>
-  <button class="delete-selected btn" href="#"><span>Delete Selected</span></button>
+  <button class="delete-visible btn" href="#"><span>Delete Visible (v)</span></button>
+  <button class="delete-selected btn" href="#"><span>Delete Selected (x)</span></button>
+  <button class="select-all btn" href="#"><span>Select All (a)</span></button>
+  <button class="select-none btn" href="#"><span>Select None (n)</span></button>
   <div id="watched-exceptions-recordset">
     <%= render :partial => "recordset", :locals => {:watched_exceptions => @watched_exceptions} %>
   </div>
