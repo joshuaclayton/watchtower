@@ -36,6 +36,27 @@
   };
   
   $(function() {
+    $(".loading-progress").ajaxStart(function() {
+      $(this).fadeIn("slow");
+    });
+    $(".loading-progress").ajaxStop(function() {
+      $(this).animate({opacity: 1.0}, 5).fadeOut("slow");
+    });
+    // $.ajaxSetup({
+    //   beforeSend: function() {
+    //     
+    //   },
+    //   complete: function() {
+    //     
+    //     
+    //   }
+    // });
+    
+    
+    $(document).ajaxStart(function() {
+      
+    });
+    
     var watchtower = $doc.data("watchtower");
     $(".delete-visible").click(function() {
       $(document).trigger("delete-visible.watchtower");
@@ -51,6 +72,14 @@
     
     $(".select-none").click(function() {
       $(document).trigger("select-none.watchtower");
+    });
+    
+    $(".clear-watchtower-start-at").click(function() {
+      $(document).trigger("clear-start-at.watchtower");
+    });
+    
+    $(".clear-watchtower-end-at").click(function() {
+      $(document).trigger("clear-end-at.watchtower");
     });
     
     $(".pagination a").live("click", function() {
@@ -139,5 +168,32 @@
         return false;
       });
     });
+    
+    var handleDateChange = function(dateName, date) {
+      if(date.length > 0) {
+        watchtower.filters(dateName).set(date);
+      } else {
+        watchtower.filters(dateName).clear();
+      }
+    };
+    
+    $("#watchtower_exceptions_start_at").datepicker({
+      onClose: function(date, inst) { handleDateChange("start_at", date); }
+    });
+    
+    $("#watchtower_exceptions_end_at").datepicker({
+      onClose: function(date, inst) { handleDateChange("end_at", date); }
+    });
+    
+    $(document).bind("clear-start-at.watchtower", function(data) {
+      $("#watchtower_exceptions_start_at").val("");
+      handleDateChange("start_at", "");
+    });
+    
+    $(document).bind("clear-end-at.watchtower", function(data) {
+      $("#watchtower_exceptions_end_at").val("");
+      handleDateChange("end_at", "");
+    });
+
   });
 })(jQuery);
