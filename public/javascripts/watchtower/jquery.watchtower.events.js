@@ -27,6 +27,10 @@
       $doc.trigger("clear-end-at.watchtower");
     });
     
+    $(".clear-watchtower-query").click(function() {
+      $doc.trigger("clear-search.watchtower");
+    });
+    
     $(".pagination a").live("click", function() {
       watchtower.filters("page").set($(this).attr("href").match(/page\=(\d+)/)[1]);
     });
@@ -64,18 +68,24 @@
       }
     });
     
-    $("ul[class^=filter-] li a").each(function(idx, a) {
-      var $a     = $(a),
-          filter  = $a.parent().parent().attr("class").replace("filter-", ""),
-          name    = $a.text();
+    $("div.filter button").each(function(idx, button) {
+      var $button = $(button),
+          filter  = $button.parents("div.filter").attr("class").match(/filter\-(\w+)/).pop(),
+          name    = $button.siblings(".action-name").text();
       
-      $a.click(function(e) {
+      $button.click(function(e) {
         var item = $(this).parent();
+        $(this).parents("div.filter").find("button span").each(function(i, s) {
+          $(s).html("");
+        });
+        
         if(item.hasClass("active-filter")) {
+          $(this).find("span").html("");
           watchtower.filters(filter).clear(function() {
             item.removeClass("active-filter");
           });
         } else {
+          $(this).find("span").html("&#10003;");
           watchtower.filters(filter).set(name, function() {
             item.siblings().removeClass("active-filter");
             item.addClass("active-filter");

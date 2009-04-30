@@ -13,7 +13,7 @@
       <h4 class="legend">Search</h4>
       <div class="text">
         <%= form.text_field :query, :class => "col-5" %>
-        <button class="btn col-1 col-last clear-watchtower-start-at"><span>X</span></button>
+        <button class="btn col-1 col-last clear-watchtower-query"><span>&#10006;</span></button>
       </div>
     </fieldset>
   <% end %>
@@ -22,26 +22,32 @@
     <div class="text">
       <label for="watchtower_exceptions_start_at" class="col-2 left">Start At</label>
       <input type="text" id="watchtower_exceptions_start_at" class="col-3" />
-      <button class="btn col-1 col-last clear-watchtower-start-at"><span>X</span></button>
+      <button class="btn col-1 col-last clear-watchtower-start-at"><span>&#10006;</span></button>
     </div>
     <div class="text">
       <label for="watchtower_exceptions_end_at" class="col-2 left">End At</label>
       <input type="text" id="watchtower_exceptions_end_at" class="col-3" />
-      <button class="btn col-1 col-last clear-watchtower-end-at"><span>X</span></button>
+      <button class="btn col-1 col-last clear-watchtower-end-at"><span>&#10006;</span></button>
     </div>
   </fieldset>
-  <h4>Filter by Exception</h4>
-  <ul class="filter-exception_class">
+  <h4 class="legend">Filter by Exception</h4>
+  <div class="filter-exception_class filter">
     <% WatchedException.exception_classes.each do |exception_class| %>
-      <li><%= link_to exception_class, watchtower_index_path(:exception_class => exception_class) %></li>
+      <div class="group">
+        <div class="col-5 action-name"><%= exception_class %></div>
+        <button class="btn col-1 col-last"><span></span></button>
+      </div>
     <% end %>
-  </ul>
-  <h4>Filter by Controller and Action</h4>
-  <ul class="filter-controller_action">
+  </div>
+  <h4 class="legend">Filter by Controller and Action</h4>
+  <div class="filter-controller_action filter">
     <% WatchedException.controller_actions.each do |controller_action| %>
-      <li><%= link_to controller_action, watchtower_index_path(:controller_action => controller_action) %></li>
+      <div class="group">
+        <div class="col-5 action-name"><%= controller_action %></div>
+        <button class="btn col-1 col-last"><span></span></button>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>
 <% content_for :footer do %>
   <script type="text/javascript">

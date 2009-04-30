@@ -41,5 +41,10 @@
       $("#watchtower_exceptions_end_at").val("");
       watchtower.utilities.handleDateChange("end_at", "");
     });
+    
+    $doc.bind("clear-search.watchtower", function(data) {
+      $("#watched_exception_query").val("");
+      watchtower.filters("query").clear();
+    });
   });
 })(jQuery);

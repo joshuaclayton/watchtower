@@ -49,7 +49,7 @@
     $(".loading-progress").ajaxStart(function() {
       $(this).stop(true, true).fadeIn("slow");
     }).ajaxStop(function() {
-      $(this).stop(true, false).animate({opacity: 1.0}, 25).fadeOut("slow");
+      $(this).stop(true, false).animate({opacity: 1.0}, 100).fadeOut("slow");
     });
     
     var watchtower = $doc.data("watchtower");
