@@ -38,7 +38,11 @@
     $("ul.watched-exceptions li").live("click", function() {
       $(this).toggleClass("selected");
     });
-
+    
+    $("ul.watched-exceptions li a").live("click", function(e) {
+      $(this).stopImmediatePropagation()
+    });
+    
     $("#watchtower-search").submit(function(evt) {
       watchtower.filters("query").set($("input[type=text]", $(this)).val());
       return false;

@@ -1,6 +1,16 @@
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
+require 'echoe'
+
+Echoe.new("watchtower", "0.1.0") do |p|
+  p.description = "An exception logger for Rails 2.3"
+  p.url = "http://github.com/joshuaclayton/watchtower"
+  p.author = "Joshua Clayton"
+  p.email = "joshua.clayton@gmail.com"
+  p.ignore_pattern = ["tmp/*"]
+  p.development_dependencies = ["activesupport >= 2.3.0", "will_paginate >= 2.3.4"]
+end
 
 desc 'Default: run unit tests.'
 task :default => :test
