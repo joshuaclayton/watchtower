@@ -1,0 +1,26 @@
+
+***********************************************************
+
+You're going to want to copy over assets (if you) haven't 
+yet.  You can do so with:
+
+  script/generate watchtower_assets
+
+Once you've done that, open up your ApplicationController 
+and insert (at the top of the class definition):
+
+  class ApplicationController < ActionController::Base
+    include Watchtower::ApplicationControllerBase
+    
+    # etc.
+  end
+  
+If you want to catch exceptions locally, below the include,
+insert the method call `force_public_request_handling!`.
+
+Once that's complete, navigate to /watchtower and see the
+app running.  If you want to secure Watchtower, create a 
+new initializer and extend WatchtowerController, adding any
+before_filters you would like.  It's that easy!
+
+***********************************************************
