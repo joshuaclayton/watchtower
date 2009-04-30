@@ -25,6 +25,7 @@
 
 .content dt { text-transform: uppercase; font-size: 1.5em; color: #555; }
 .content dd { padding: 0 2em; }
+.content dd.bt { padding: 0; }
 .content dd code { font-size: 1.2em; }
 
 .content .backtrace pre { margin: 0; background: #444; color: #ddd; padding: 1em; }
