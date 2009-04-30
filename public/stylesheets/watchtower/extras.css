@@ -78,9 +78,9 @@ button.btn span {
 }
 button.btn {background-position:  100% 0;}
 button.btn span { background-position: 0 -50px; }
-button.btn:hover { background-position: 100% -100px; }
-button.btn:hover span { background-position: 0 -150px; }
+button.btn:hover, button.btn.active { background-position: 100% -100px; }
+button.btn:hover span, button.btn.active span { background-position: 0 -150px; }
 
-button.btn:active {
+button.btn:active, button.btn.active {
   top:1px;
 }

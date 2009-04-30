@@ -13,7 +13,14 @@
   <body>
     <div class="container">
       <div class="header col-24">
-        <h1><%= link_to "Watchtower", watchtower_index_path %></h1>
+        <div class="col-18">
+          <h1><%= link_to "Watchtower", watchtower_index_path %></h1>
+        </div>
+        <div class="col-6 col-last">
+          <div class="loading-progress">
+            Loading
+          </div>
+        </div>
       </div>
       <div class="content col-24">
         <%= yield %>
