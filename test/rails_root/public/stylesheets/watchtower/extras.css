@@ -1,0 +1,86 @@
+ /** =extras.css
+************************************************************
+@project  Easel
+@note     Reference and reusable techniques best kept out of the screen.css
+@note     Import into screen.css or just copy/paste as needed
+@note     Stick anything that may be able to be reused in here
+@fontdef  "Bradley Hand ITC", "Apple Chancery", "URW Chancery L", cursive; script/cursive
+************************************************************/
+
+/** =css3 rounded corners for nice browsers
+************************************************************/
+.rnd {
+  border-radius: 1em;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	padding: 1em;
+}
+
+/** =Safari 3 and 4 fix for light on dark text
+************************************************************
+@note   Fixes chunky light text on dark bg in Safari. Change #000 to the element's background color.
+@see    http://jonnotie.nl/blog/fix-the-bad-text-rendering-in-safari-take-two/
+************************************************************/
+.safari-txt {
+  text-shadow: #000 0 0 1px;
+}
+
+/** =use the best ampersand available
+************************************************************/
+.amp {
+  font-family: Baskerville, Palatino, Constantia, "Book Antiqua", "URW Palladio L", serif;
+  font-style: italic;
+  font-weight: normal;
+}
+
+/** =Helvetica Neue Light
+************************************************************
+@see  http://blog.gesteves.com/post/36097597/helvetica-neue-light
+************************************************************/
+.hn-light {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+}
+
+/** =sliding doors buttons (with hover)
+************************************************************
+@see    http://www.filamentgroup.com/lab/styling_the_button_element_with_sliding_doors
+@see    http://git.fusionary.com/?p=fusionary/build_tools.git
+************************************************************/
+button.btn { 
+  border:0;
+  cursor:pointer; 
+  font-weight:bold; 
+  padding:0 10px 0 0; 
+  text-align:center;
+  font-size: 1em;
+  background: none;
+  position: relative;
+}
+button.btn span { 
+  position:relative; 
+  display:block; 
+  white-space:nowrap;
+  padding:0 0 0 10px;
+  height:26px;
+  line-height:24px;
+  color:#fff;
+}
+
+/* removes 1px border in FF */
+button::-moz-focus-inner { border: none; padding: 0;} 
+
+/* using a sprite instead of four separate images... */
+button.btn,
+button.btn span {
+  background-image: url(assets/images/buttons/sprite-gray.png);
+  background-repeat: no-repeat;
+}
+button.btn {background-position:  100% 0;}
+button.btn span { background-position: 0 -50px; }
+button.btn:hover, button.btn.active { background-position: 100% -100px; }
+button.btn:hover span, button.btn.active span { background-position: 0 -150px; }
+
+button.btn:active, button.btn.active {
+  top:1px;
+}
