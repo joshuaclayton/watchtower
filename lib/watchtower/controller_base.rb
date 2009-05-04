@@ -46,8 +46,9 @@ module Watchtower
           @show_by_key = true
           return
         end
-        @watched_exception = WatchedException.find(key)
+        @watched_exception = WatchedException.find_by_id(key)
         @show_by_id = true if @watched_exception
+        raise ActiveRecord::RecordNotFound unless @watched_exception
       end
     end
   end

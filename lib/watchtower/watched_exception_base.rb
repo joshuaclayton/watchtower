@@ -11,7 +11,7 @@ module Watchtower
     module Callbacks
       def self.included(base)
         base.send :include, InstanceMethods
-        base.before_validation_on_create :generate_key
+        base.before_validation_on_create :generate_key, :if => lambda {|watched_exception| watched_exception.key.blank? }
         base.before_save :generate_controller_action, :clean_backtrace
       end
       
@@ -40,11 +40,11 @@ module Watchtower
         base.class_eval do
           default_scope :order => "#{WatchedException.quoted_table_name}.created_at DESC"
           named_scope :recent, lambda {|*ct| ct = ct.first || 5; { :limit => ct }}
-          named_scope :search, lambda { |query| {
+          named_scope :search, lambda {|query| {
             :conditions => [
               [ :controller_name, :action_name, 
                 :controller_action, :exception_class, 
-                :parameters, :message].map { |attribute| "#{WatchedException.quoted_table_name}.#{attribute} LIKE :query"}.join(" OR "), {:query => query}
+                :parameters, :message].map {|attribute| "#{WatchedException.quoted_table_name}.#{attribute} LIKE :query"}.join(" OR "), {:query => query}
               ]
           }}
           

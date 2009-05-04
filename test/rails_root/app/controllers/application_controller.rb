@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include Watchtower::ApplicationControllerBase
+  force_public_request_handling!
   
   helper :all
   protect_from_forgery
