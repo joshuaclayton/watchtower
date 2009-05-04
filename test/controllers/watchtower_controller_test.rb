@@ -18,7 +18,13 @@ class WatchtowerControllerTest < ActionController::TestCase
     end
     
     context "with an existing key" do
+      setup do
+        @exception = Factory :watched_exception, :key => "my-key"
+        get :show, :id => "my-key"
+      end
       
+      should_respond_with :success
+      should_render_template :show
     end
     
     context "with invalid id" do
