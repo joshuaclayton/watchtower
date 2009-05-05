@@ -2,7 +2,10 @@ require "test_helper"
 
 class WatchtowerControllerTest < ActionController::TestCase
   context "on GET to :index" do
-    setup { get :index }
+    setup do
+      WatchedExceptionsPresenter.expects(:new).with(has_entries("query" => "term", "page" => "3")).returns([].paginate)
+      get :index, :query => "term", :page => "3"
+    end
     should_respond_with :success
   end
   
