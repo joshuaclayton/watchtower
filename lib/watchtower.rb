@@ -1,4 +1,3 @@
-# Watchtower
 require "watchtower/watched_exception_base"
 require "watchtower/controller_base"
 require "watchtower/application_controller_base"
