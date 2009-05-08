@@ -40,7 +40,7 @@
     });
     
     $("ul.watched-exceptions li a").live("click", function(e) {
-      $(this).stopImmediatePropagation()
+      $(this).stopImmediatePropagation();
     });
     
     $("#watchtower-search").submit(function(evt) {
