@@ -8,7 +8,7 @@ app/views/watchtower/destroy_multiple.js.rjs
 app/views/watchtower/index.html.erb
 app/views/watchtower/index.js.rjs
 app/views/watchtower/show.html.erb
-config/routes.rb
+config/watchtower_routes.rb
 generators/watchtower/templates/migrations/create_watched_exceptions.rb
 generators/watchtower/templates/README
 generators/watchtower/USAGE
@@ -53,6 +53,7 @@ generators/watchtower_assets/USAGE
 generators/watchtower_assets/watchtower_assets_generator.rb
 lib/watchtower/application_controller_base.rb
 lib/watchtower/controller_base.rb
+lib/watchtower/routes.rb
 lib/watchtower/watched_exception_base.rb
 lib/watchtower/watched_exceptions_presenter.rb
 lib/watchtower.rb
@@ -62,5 +63,3 @@ rails/init.rb
 Rakefile
 README.textile
 tasks/watchtower_tasks.rake
-test/test_helper.rb
-watchtower.gemspec
