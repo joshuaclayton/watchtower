@@ -3,7 +3,7 @@ require "rake/testtask"
 require "rake/rdoctask"
 require "echoe"
 
-Echoe.new("watchtower", "0.1.3") do |p|
+Echoe.new("watchtower", "0.1.4") do |p|
   p.description = "An exception logger for Rails 2.3"
   p.url = "http://github.com/joshuaclayton/watchtower"
   p.author = "Joshua Clayton"

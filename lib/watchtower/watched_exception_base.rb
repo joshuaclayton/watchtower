@@ -66,11 +66,15 @@ module Watchtower
       end
       
       def exception_classes
-        all(:select => "DISTINCT exception_class", :order => "exception_class").collect(&:exception_class)
+        with_exclusive_scope do
+          all(:select => "DISTINCT exception_class", :order => "exception_class").collect(&:exception_class)
+        end
       end
       
       def controller_actions
-        all(:select => "DISTINCT controller_action", :order => "controller_action").collect(&:controller_action)
+        with_exclusive_scope do
+          all(:select => "DISTINCT controller_action", :order => "controller_action").collect(&:controller_action)
+        end
       end
     end
     

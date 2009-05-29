@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{watchtower}
-  s.version = "0.1.3"
+  s.version = "0.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Joshua Clayton"]
-  s.date = %q{2009-05-18}
+  s.date = %q{2009-05-29}
   s.description = %q{An exception logger for Rails 2.3}
   s.email = %q{joshua.clayton@gmail.com}
   s.extra_rdoc_files = ["lib/watchtower/application_controller_base.rb", "lib/watchtower/controller_base.rb", "lib/watchtower/routes.rb", "lib/watchtower/watched_exception_base.rb", "lib/watchtower/watched_exceptions_presenter.rb", "lib/watchtower.rb", "README.textile", "tasks/watchtower_tasks.rake"]
